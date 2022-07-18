@@ -6,6 +6,8 @@ import { ThemeProvider } from "styled-components/native";
 import { useFonts as useOswald, Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
+import { itemRequest } from "./src/services/items/items.service"
+
 export default function App() {
 
   const [oswaldLoaded] = useOswald({
