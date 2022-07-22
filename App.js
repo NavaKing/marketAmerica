@@ -5,8 +5,8 @@ import { theme } from "./src/infrastructure/theme"
 import { ThemeProvider } from "styled-components/native";
 import { useFonts as useOswald, Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import { ItemContextProvider } from "./src/services/items/items.context";
 
-import { itemRequest } from "./src/services/items/items.service"
 
 export default function App() {
 
@@ -25,7 +25,9 @@ export default function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
+    <ItemContextProvider>
     <ItemScreen />
+    </ItemContextProvider>
     </ThemeProvider>
     <ExposStatusBar style="auto" />
     </>

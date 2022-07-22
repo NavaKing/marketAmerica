@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Searchbar } from "react-native-paper";
-import styled from "styled-components/native";
+import styled from "styled-components";
 import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { ItemInfoCard } from "../components/item-info-card.component";
+
+import { ItemContext } from "../../../services/items/items.context";
 
 
 const SafeArea = styled(SafeAreaView)`
@@ -16,24 +18,22 @@ const SearchContainer = styled.View`
 `;
 
 
-export const ItemScreen = () => (
+export const ItemScreen = () => {
+  const itemContext = useContext(ItemContext);
+  console.log(itemContext)
+  return (
   <SafeArea>
     <SearchContainer>
       <Searchbar />
     </SearchContainer>
     <FlatList
-      data={[
-        { name: 1 }, 
-        { name: 2 },
-        { name: 3 },
-        { name: 4 }
-      ]}
+      data={ itemContext.restaurants}
       renderItem={() => <ItemInfoCard />}
       keyExtractor={(item) => item.name}
       contentContainerStyle={{ padding: 16 }}
     />
   </SafeArea>
-);
+)};
 
 const styles = StyleSheet.create({
   container: {
